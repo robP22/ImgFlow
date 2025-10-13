@@ -1,4 +1,4 @@
-# img_rsz
+# Img_Rsz
 
 `img_rsz` is a lightweight Python tool that automates the resizing of `.png` images.  
 Designed for quick batch processing and can easily fit into other image-processing workflows.
