@@ -1,6 +1,6 @@
 import shutil
 
-def progress_b(progress, total, _bar='|') -> None:
+def progress_b(progress, total, _bar='❚') -> None:
     ratio: float = progress / total
     percent: float = 100 * ratio
 

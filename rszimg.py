@@ -71,8 +71,8 @@ def prcss_thrds(files_list) -> None:
 def format_process_output(target_string: str, symbol: str =chr(0x305)) -> str:
     """ Formats the string for a 78 character terminal width. """
     target: int = (78 - len(target_string) // 2) - 1
-    left: str = symbol * (target//2)
-    right: str = symbol * (target//2)
+    left: str = symbol * (target//4)
+    right: str = symbol * (target//4)
 
     return left + target_string + right
 
@@ -101,12 +101,12 @@ def main():
         sys.exit(1)
 
     _begin: str = " Begin Processing "
-    _complete: str = " Processing Complete "
-    symbol: str = '_'
+    _complete: str = " Processing Completed "
+    symbol: str = '一'
 
-    print(f"\n{format_process_output(_begin)}")
+    print(f"\n|{format_process_output(_begin, symbol)}|")
     prcss_thrds(files_list)
-    print(f"\n{format_process_output(_complete, symbol)}")
+    print(f"\n|{format_process_output(_complete, symbol)}|")
 
     num_failed: int = len(failures)
     tot_length: int = len(files_list)
