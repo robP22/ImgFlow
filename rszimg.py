@@ -4,6 +4,7 @@ import sys
 from PIL import Image
 from time import sleep
 from progress_bar import progress_b
+from threading import Thread
 
 failures: list = []
 output_path: str = ''
@@ -33,18 +34,58 @@ def process_image(filename) -> None:
         sleep(0.01)
         failures.append(filename)
 
-def processor(files_list) -> None:
+def processor(chunk_files) -> None:
     """ Process images from a list of filenames. """
     count: int = 1
-    n: int = len(files_list)
+    n: int = len(chunk_files)
 
-    print("\t\t<---------- Processing images ---------->")
     progress_b(0, n)
-    for filename in files_list:
+    for filename in chunk_files:
         progress_b(count, n)
         process_image(filename)
         count += 1
-    print("\n\t\t<--------- Processing complete --------->")
+
+def prcss_thrds(files_list) -> None:
+    threads: list = []
+    num_threads: int = 6 # Testing with 6 threads
+
+    chunk_size: int = int(len(files_list)/num_threads)
+    curr_chunk: int = 0
+
+    chunk_arr: list = []
+
+    for _ in range(num_threads):
+        chunk: list = []
+        for i in range(curr_chunk, curr_chunk + chunk_size):
+            chunk.append(files_list[i])
+        curr_chunk += chunk_size
+        t = Thread(target=processor, args=(chunk,))
+        threads.append(t)
+
+    for t in threads:
+        t.start()
+
+    for t in threads:
+        t.join()
+
+def format_process_output(target_string: str, symbol: str =chr(0x305)) -> str:
+    """ Formats the string for a 78 character terminal width. """
+    target: int = (78 - len(target_string) // 2) - 1
+    left: str = symbol * (target//2)
+    right: str = symbol * (target//2)
+
+    return left + target_string + right
+
+def summary(num_failed: int, tot_length: int) -> None:
+    fail_percent: float = (num_failed / tot_length) * 100
+
+    _success: str = f"Success rate: {100.0 - fail_percent:5.1f}%"
+    _failed: str = f"Failure rate: {fail_percent:5.1f}%"
+    _items: str = f"Items Processed: {tot_length - num_failed}"
+
+    _summary: str = f"[SUMMARY] {_success} | {_failed} | {_items}"
+    _5: str = "     "
+    print(f"{_5}{_summary}\n")
 
 def main():
     global failures
@@ -55,13 +96,22 @@ def main():
     input_path = os.path.join(input_path, 'images/') # Images to be processed
 
     files_list = get_files()
-    if len(files_list) == 0:
+    n: int = len(files_list)
+    if n == 0:
         sys.exit(1)
-    processor(files_list)
+
+    _begin: str = " Begin Processing "
+    _complete: str = " Processing Complete "
+    symbol: str = '_'
+
+    print(f"\n{format_process_output(_begin)}")
+    prcss_thrds(files_list)
+    print(f"\n{format_process_output(_complete, symbol)}")
 
     num_failed: int = len(failures)
-    fail_percent: float = (num_failed / len(files_list)) * 100
-    print(f"\t\tSuccess rate: {100.00 - fail_percent:.2f} | Failure rate: {fail_percent:.2f}%")
+    tot_length: int = len(files_list)
+
+    summary(num_failed, tot_length)
     failures.clear()
 
 if __name__ == "__main__":
