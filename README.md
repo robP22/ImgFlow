@@ -26,9 +26,9 @@ python img_rsz.py
 python3 img_rsz.py
 ```
 
-By default, it processes all `.png` images in the current directory and saves the resized versions to an output folder.
+By default, it processes all `.png` images in the '/img_rsz/images' directory and saves the resized versions to '/img_rsz/processed'.
 
-You can change the input/output directory or image dimensions directly in the script. [TEMPORARY]
+The user is now able to input a directory, though is currently only accessible if the directory is not found.
 
 ---
 
@@ -63,8 +63,8 @@ You can change the input/output directory or image dimensions directly in the sc
 
 Planned enhancements focus on scalability and performance:
 
-- **User Input:** 
-- **temp**
+- **User Input:** Allow the user to change the path initially or run the script with defaults 
+- **Security:** Perform Gap analysis to determine application vulnerabilities. (Path sanitization, input validation, etc.)
 ---
 
 ## License
