@@ -6,21 +6,23 @@ It is designed for quick local processing and can be integrated into other image
 
 ## Installation
 
-### Linux / macOS
-
 ```bash
 git clone https://github.com/robP22/ImgFlow.git
 cd ImgFlow
-source venv/bin/activate
-pip install -r requirements.txt
+python3 -m venv .venv
 ```
 
-### Windows (PowerShell)
+- Linux / macOS:
+  ```bash
+  source .venv/bin/activate
+  ```
 
-```powershell
-git clone https://github.com/robP22/ImgFlow.git
-cd ImgFlow
-venv\Scripts\Activate.ps1
+- Windows:
+  ```powershell
+  .\.venv\Scripts\Activate.ps1
+  ```
+
+```bash
 pip install -r requirements.txt
 ```
 
