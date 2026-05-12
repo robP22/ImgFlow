@@ -73,4 +73,3 @@ Planned enhancements focus on scalability and robustness:
 
 This project is released under the **MIT License**. See the LICENSE file for details.
 
-```
