@@ -1,7 +1,7 @@
 # ImgFlow
 
-`ImgFlow` is a lightweight Python tool that automates the resizing of `.png` images.  
-Designed for quick batch processing and can easily fit into other image-processing workflows.
+`ImgFlow` is a lightweight Python tool that automates the batch resizing of `.png` images.  
+It is designed for quick local processing and can be integrated into other image-processing workflows.
 
 ---
 
@@ -12,7 +12,7 @@ git clone https://github.com/robP22/ImgFlow.git
 cd ImgFlow
 source venv/bin/activate
 pip install -r requirements.txt
-```
+````
 
 ---
 
@@ -22,51 +22,55 @@ Run the main script from the command line:
 
 ```bash
 python ImgFlow.py
-'- or -'
+# or
 python3 ImgFlow.py
 ```
 
-By default, it processes all `.png` images in the '/ImgFlow/images' directory and saves the resized versions to '/ImgFlow/processed'.
+By default, it processes all `.png` images in the `/images` directory and saves the resized versions to `/processed`.
 
-The user is now able to input a directory, though is currently only accessible if the directory is not found.
+The tool supports user-defined input directories. If an invalid or missing directory is provided, it falls back to the default `/images` directory.
 
 ---
 
 ## Example
 
 ```bash
-(venv) PS C:\Users\username\Documents\Projects\py_projects\ImgFlow> Python3 ImgFlow.py
+(venv) PS C:\Users\username\Documents\Projects\py_projects\ImgFlow> python ImgFlow.py
 ```
 
-- **Input:** All `.png` files in the "working directory + /images"
-- **Output:** Resized images written to `/processed` (or configured path)
+* **Input:** All `.png` files in `/images`
+* **Output:** Resized images written to `/processed` (or configured path)
 
 ---
 
 ## Features
 
-- Automatically resizes all `.png` files in a directory.
-- Saves output images to a specified folder.
-- Displays a simple progress bar during processing.
-- Built with **Pillow** and minimal dependencies.
+* Batch processes all `.png` files in a directory
+* Saves output images to a specified folder
+* Displays a simple progress indicator during processing
+* Built with **Pillow** and minimal dependencies
 
 ---
 
 ## Implementation Notes
 
-- Uses Pillow’s `Image.thumbnail()` with BICUBIC anti-aliasing by default.
-- Displays the progress of the file processing task in terminal.
+* Uses Pillow’s `Image.thumbnail()` with BICUBIC anti-aliasing
+* Processes images in batch mode for efficiency
+* Includes terminal-based progress tracking
 
 ---
 
 ## Future Improvements
 
-Planned enhancements focus on scalability and performance:
+Planned enhancements focus on scalability and robustness:
 
-- **User Input:** Allow the user to change the path initially or run the script with defaults 
-- **Security:** Perform Gap analysis to determine application vulnerabilities. (Path sanitization, input validation, etc.)
+* **User Input:** Improve CLI handling for custom input/output paths with validation
+* **Security:** Add input validation and path sanitization to prevent invalid or unsafe directory access
+
 ---
 
 ## License
 
 This project is released under the **MIT License**. See the LICENSE file for details.
+
+```
