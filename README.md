@@ -1,6 +1,6 @@
-# Img_Rsz
+# ImgFlow
 
-`img_rsz` is a lightweight Python tool that automates the resizing of `.png` images.  
+`ImgFlow` is a lightweight Python tool that automates the resizing of `.png` images.  
 Designed for quick batch processing and can easily fit into other image-processing workflows.
 
 ---
@@ -8,8 +8,8 @@ Designed for quick batch processing and can easily fit into other image-processi
 ## Installation
 
 ```bash
-git clone https://github.com/robP22/img_rsz.git
-cd img_rsz
+git clone https://github.com/robP22/ImgFlow.git
+cd ImgFlow
 source venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -21,12 +21,12 @@ pip install -r requirements.txt
 Run the main script from the command line:
 
 ```bash
-python img_rsz.py
+python ImgFlow.py
 '- or -'
-python3 img_rsz.py
+python3 ImgFlow.py
 ```
 
-By default, it processes all `.png` images in the '/img_rsz/images' directory and saves the resized versions to '/img_rsz/processed'.
+By default, it processes all `.png` images in the '/ImgFlow/images' directory and saves the resized versions to '/ImgFlow/processed'.
 
 The user is now able to input a directory, though is currently only accessible if the directory is not found.
 
@@ -35,7 +35,7 @@ The user is now able to input a directory, though is currently only accessible i
 ## Example
 
 ```bash
-(venv) PS C:\Users\username\Documents\Projects\py_projects\img_rsz> Python3 img_rsz.py
+(venv) PS C:\Users\username\Documents\Projects\py_projects\ImgFlow> Python3 ImgFlow.py
 ```
 
 - **Input:** All `.png` files in the "working directory + /images"
