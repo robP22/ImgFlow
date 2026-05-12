@@ -15,7 +15,7 @@ failures: list = []
 
 def get_decision() -> str:
     """ Allow the user to exit the program or correct a directory path error. """
-    print("Example path structure: './images/' or 'C://Users/user/Documents/img_rsz/images/'\n")
+    print("Example path structure: './images/' or 'C://Users/user/Documents/ImgFlow/images/'\n")
     user_input: str = input("Enter the images path or type 'q' to quit: ")
     if user_input == 'q':
         sys.exit(0)
