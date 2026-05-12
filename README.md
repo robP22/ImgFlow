@@ -1,18 +1,28 @@
 # ImgFlow
 
-`ImgFlow` is a lightweight Python tool that automates the batch resizing of `.png` images.  
+`ImgFlow` is a lightweight Python tool that automates the batch resizing of `.png` images.
 It is designed for quick local processing and can be integrated into other image-processing workflows.
 
 
 ## Installation
+
+### Linux / macOS
 
 ```bash
 git clone https://github.com/robP22/ImgFlow.git
 cd ImgFlow
 source venv/bin/activate
 pip install -r requirements.txt
-````
+```
 
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/robP22/ImgFlow.git
+cd ImgFlow
+venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -28,7 +38,6 @@ By default, it processes all `.png` images in the `/images` directory and saves 
 
 The tool supports user-defined input directories. If an invalid or missing directory is provided, it falls back to the default `/images` directory.
 
-
 ## Example
 
 ```bash
@@ -38,7 +47,6 @@ The tool supports user-defined input directories. If an invalid or missing direc
 * **Input:** All `.png` files in `/images`
 * **Output:** Resized images written to `/processed` (or configured path)
 
-
 ## Features
 
 * Batch processes all `.png` files in a directory
@@ -46,13 +54,11 @@ The tool supports user-defined input directories. If an invalid or missing direc
 * Displays a simple progress indicator during processing
 * Built with **Pillow** and minimal dependencies
 
-
 ## Implementation Notes
 
 * Uses Pillow’s `Image.thumbnail()` with BICUBIC anti-aliasing
-* Processes images in batch mode for efficiency
+* Processes images in batch mode for improved throughput
 * Includes terminal-based progress tracking
-
 
 ## Future Improvements
 
@@ -61,8 +67,6 @@ Planned enhancements focus on scalability and robustness:
 * **User Input:** Improve CLI handling for custom input/output paths with validation
 * **Security:** Add input validation and path sanitization to prevent invalid or unsafe directory access
 
-
 ## License
 
 This project is released under the **MIT License**. See the LICENSE file for details.
-
